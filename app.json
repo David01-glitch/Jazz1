@@ -1,0 +1,28 @@
+{
+  "name": "Golden Jazz Classics",
+  "description": "A jazz music appreciation blog exploring legendary artists and vinyl collections — pre-rendered, SEO-ready and Google Ads compliant.",
+  "repository": "https://github.com/your-org/golden-jazz-classics",
+  "keywords": ["jazz", "vinyl", "blog", "react", "vite", "ssg", "new-orleans"],
+  "website": "https://goldenjazzclassics.com",
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "echo 'Golden Jazz Classics deployed.'"
+  },
+  "stack": "heroku-22"
+}

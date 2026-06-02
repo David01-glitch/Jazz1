@@ -1,0 +1,36 @@
+{
+  "name": "golden-jazz-classics",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Golden Jazz Classics — a jazz music appreciation blog exploring legendary artists and vinyl collections.",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:client": "vite build --outDir dist",
+    "build:server": "vite build --ssr src/entry-server.jsx --outDir dist-ssr",
+    "build:seo": "node scripts/generate-seo.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "build": "npm run build:client && npm run build:server && npm run prerender && npm run build:seo",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "serve": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.19.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
+  }
+}

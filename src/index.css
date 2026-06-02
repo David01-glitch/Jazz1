@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-charcoal text-cream font-body antialiased;
+    font-size: 17px;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(1200px 600px at 50% -10%, rgba(201, 164, 76, 0.08), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(110, 31, 43, 0.10), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display text-cream;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+
+  ::selection {
+    background: rgba(201, 164, 76, 0.32);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #e3c878;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .container-prose {
+    @apply mx-auto w-full max-w-3xl px-5 sm:px-8;
+  }
+
+  .gold-rule {
+    @apply h-px w-full border-0 bg-gold-divider;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.28em] text-gold;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-gold/20 bg-charcoal-800/70 shadow-panel backdrop-blur-sm;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 ease-smooth focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold-light;
+  }
+  .btn-gold {
+    @apply btn bg-gradient-to-b from-gold-light to-gold-dark text-charcoal-900 shadow-gold hover:from-gold hover:to-gold-deep hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply btn border border-gold/40 text-cream hover:border-gold hover:bg-gold/10;
+  }
+
+  .link-gold {
+    @apply text-gold hover:text-gold-light underline-offset-4 hover:underline;
+  }
+
+  .prose-jazz p {
+    @apply mb-5 text-cream/85;
+  }
+  .prose-jazz h2 {
+    @apply mt-12 mb-4 text-2xl sm:text-3xl text-gold-light;
+  }
+  .prose-jazz h3 {
+    @apply mt-8 mb-3 text-xl text-cream;
+  }
+  .prose-jazz ul {
+    @apply mb-6 ml-5 list-disc space-y-2 text-cream/85 marker:text-gold;
+  }
+  .prose-jazz blockquote {
+    @apply my-8 border-l-2 border-gold/60 pl-5 italic text-cream/90;
+  }
+}
+
+/* Inline accordion transition — content exists in DOM, only visually toggled */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0.55;
+}
+.accordion-panel > .accordion-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.accordion-panel[data-open='true'] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* Ensure expandable content is fully visible when JS is unavailable */
+.no-js .accordion-panel {
+  grid-template-rows: 1fr !important;
+  opacity: 1 !important;
+}
+.no-js [data-js-hidden] {
+  display: block !important;
+}
