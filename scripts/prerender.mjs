@@ -12,7 +12,15 @@ const distDir = path.join(root, 'dist');
 const { render } = await import(path.join(root, 'dist-ssr', 'entry-server.js'));
 const { PRERENDER_PATHS } = await import(path.join(root, 'src', 'lib', 'site.js'));
 
-const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
+// Strip the static SEO defaults from the template so that each prerendered
+// page emits exactly one set of route-specific SEO tags from react-helmet-async.
+// The defaults remain in the source index.html as a fallback for any tooling
+// that inspects the raw template.
+const rawTemplate = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
+const template = rawTemplate.replace(
+  /<!--seo-default-start-->[\s\S]*?<!--seo-default-end-->/,
+  ''
+);
 
 function outFileFor(routePath) {
   if (routePath === '/') return path.join(distDir, 'index.html');
