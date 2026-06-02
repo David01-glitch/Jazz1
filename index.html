@@ -7,8 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <!--seo-default-start-->
-    <!-- Default SEO metadata (per-route values override via react-helmet-async) -->
+    <!-- SEO metadata (replaced per-route at prerender time) -->
     <title>Golden Jazz Classics — Legendary Artists &amp; Vinyl Collections</title>
     <meta
       name="description"
@@ -34,7 +33,7 @@
       content="A jazz appreciation journal celebrating legendary artists, classic albums and the art of vinyl collecting from New Orleans."
     />
     <meta name="twitter:image" content="https://goldenjazzclassics.com/og-default.jpg" />
-    <!--seo-default-end-->
+    <!--ssr-jsonld-->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -78,8 +77,6 @@
       gtag('js', new Date());
       gtag('config', 'G-4J046JXWVC', { anonymize_ip: true });
     </script>
-
-    <!--ssr-head-->
   </head>
   <body>
     <div id="root"><!--ssr-outlet--></div>
